@@ -16,13 +16,36 @@ h1 {
 }
 
 /* 画像エリア */
-p {
+.image {
     text-align: center;
     background-color: white;
     border: 2px dashed #ccc;
     padding: 80px;
     width: 300px;
     margin: 30px auto;
+}
+
+/* 値段 */
+.price {
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+    color: #d2691e;
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 20px auto;
+}
+
+/* 商品説明 */
+.koukoku {
+    text-align: center;
+    font-size: 18px;
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 20px auto;
+    width: 500px;
 }
 
 /* リスト */
