@@ -1,88 +1,103 @@
-/* ページ全体 */
+/* ==========================================
+   1. ページ全体の共通設定
+   ========================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 body {
-    font-family: sans-serif;
+    font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
     background-color: #fff8f0;
     color: #333;
-    margin: 0;
-    padding: 30px;
 }
 
-/* タイトル */
-h1 {
+/* ==========================================
+   2. 上半部分：背景画像 ＆ 中央テキスト（ヒーローエリア）
+   ========================================== */
+.hero-section {
+    position: relative;
+    width: 100%;
+    height: 65vh; /* 画面の高さの65%分、画像を大きく広げる */
+    min-height: 400px;
+    
+    /* 背景画像の設定（画像ファイルの名前やパスに合わせて変更してください） */
+    background-image: url('../images/yakisoba.jpg'); 
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    
+    /* 中の文字を真ん中に集める設定 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
     text-align: center;
-    color: #d2691e;
-    border-bottom: 3px solid #d2691e;
-    padding-bottom: 10px;
 }
 
-/* 画像エリア */
-.image {
-    text-align: center;
-    background-color: white;
-    border: 2px dashed #ccc;
-    padding: 80px;
-    width: 300px;
-    margin: 30px auto;
+/* 画像の上に黒い半透明の膜を張って文字を読みやすくする */
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.45); /* 0.45を大きくすると暗くなり、文字がクッキリします */
+    z-index: 1;
+}
+
+/* 真ん中に浮き出させるテキストのグループ */
+.hero-content {
+    position: relative;
+    z-index: 2;
+    color: #ffffff; /* 文字を白にする */
+    padding: 0 20px;
+}
+
+/* タイトル（焼きそば） */
+.hero-content h1 {
+    font-size: 3rem;
+    font-weight: bold;
+    margin-bottom: 15px;
+    letter-spacing: 0.05em;
+    text-shadow: 0 4px 10px rgba(0, 0, 0, 0.7);
+}
+
+/* 商品説明（コスパ最強） */
+.hero-content .koukoku {
+    font-size: 1.1rem;
+    font-weight: bold;
+    background: rgba(210, 105, 30, 0.9); /* 元のコードのチョコレート色（#d2691e）をベースにした帯 */
+    display: inline-block;
+    padding: 6px 20px;
+    border-radius: 4px;
+    margin: 0 auto 20px auto;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.3);
 }
 
 /* 値段 */
-.price {
-    text-align: center;
-    font-size: 24px;
+.hero-content .price {
+    font-size: 2.5rem;
     font-weight: bold;
-    color: #d2691e;
-    background: none;
-    border: none;
-    padding: 0;
-    margin: 20px auto;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
+    margin: 0;
 }
 
-/* 商品説明 */
-.koukoku {
-    text-align: center;
-    font-size: 18px;
-    background: none;
-    border: none;
-    padding: 0;
-    margin: 20px auto;
-    width: 500px;
-}
-
-/* リスト */
-ul {
-    width: 300px;
-    margin: auto;
-    padding: 20px;
-    background-color: white;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    list-style: none;
-}
-
-/* 各項目 */
-li {
-    padding: 10px;
-    border-bottom: 1px solid #ddd;
-}
-
-li:last-child {
-    border-bottom: none;
-}
-
+/* ==========================================
+   3. 下半部分：栄養成分表示・アレルギー（情報エリア）
+   ========================================== */
 .info-container {
     max-width: 500px;
-    margin: 20px auto;
+    margin: 40px auto; /* 上下にゆとりを持たせる */
     background: #ffffff;
     padding: 25px;
     border-radius: 8px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    font-family: 'Helvetica Neue', Arial, sans-serif;
-    color: #333333;
 }
 
 .info-container h2 {
-    font-size: 1.2rem;
-    border-left: 4px solid #e67e22; /* アクセントのオレンジ線 */
+    font-size: 1.1rem;
+    border-left: 4px solid #d2691e; /* タイトルカラーに合わせたアクセント線 */
     padding-left: 10px;
     margin-top: 30px;
     margin-bottom: 15px;
@@ -93,6 +108,7 @@ li:last-child {
     margin-top: 0;
 }
 
+/* 栄養成分テーブル */
 .info-container table {
     width: 100%;
     border-collapse: collapse;
@@ -106,7 +122,6 @@ li:last-child {
     text-align: left;
 }
 
-/* 左側（項目名）のスタイル */
 .info-container th {
     background-color: #f7fafc;
     color: #4a5568;
@@ -118,7 +133,7 @@ li:last-child {
     color: #2d3748;
 }
 
-
+/* アレルギーリスト */
 .allergen-list {
     display: flex;
     flex-wrap: wrap; 
@@ -138,6 +153,7 @@ li:last-child {
     font-weight: bold;
 }
 
+/* 注記 */
 .note {
     font-size: 0.8rem;
     color: #718096;
